@@ -85,6 +85,7 @@ class SynthesisToMidicc:
         self.tune = tune.astype(int)
         
         return speed,tune
+    
     def calOnsetOffset(self, bpm, dur, kot):
         Onset_t = np.empty(len(dur))
         Offset_t = np.empty(len(dur))
