@@ -62,15 +62,6 @@ s.calOnsetOffset(BPM, DUR, KOT) # calculate onset and offset
 
 VibCount = 0
 VibFlag = False
-#for notenum in range(len(MidiNote)): 
-#    track.append(Message('note_on', note = MidiNote[notenum][0], velocity = 127, time = s.Onset_related[notenum]))
-#    if(notenum in VibInd):
-#        VibFlag = True
-#        s.vibratoMaptoMidi(track, VRVC[VibCount], VEVC[VibCount], notenum)
-#        VibCount += 1
-#    s.eCToExpression(track, EC[notenum][0], notenum, VibFlag)
-#    VibFlag = False
-#    track.append(Message('note_off', note = MidiNote[notenum][0], velocity = 127, time = s.Offset_related[notenum]))
 channel_num = 1
 for notenum in range(len(MidiNote)): 
     if(notenum in staccato_spring):
@@ -82,7 +73,6 @@ for notenum in range(len(MidiNote)):
     else:
         track.append(Message('note_on', note = MidiNote[notenum][0], velocity = 127, time = s.Onset_related[notenum]))
         track.append(Message('control_change', channel = 0, control = 32, value = 127 , time = 0 ))
-        #track.append(Message('control_change', channel = 0, control = 116, value = 0, time = 0 ))
         if(notenum in VibInd):
             VibFlag = True
             s.vibratoMaptoMidi(track, VRVC[VibCount], VEVC[VibCount], notenum)
